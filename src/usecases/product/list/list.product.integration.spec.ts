@@ -3,6 +3,7 @@ import ProductModel from "../../../infrastructure/product/repository/sequelize/p
 import ProductRepository from "../../../infrastructure/product/repository/sequelize/product.repository";
 import ListProductUseCase from "./list.product.usecase";
 import ProductFactory from "../../../domain/product/factory/product.factory";
+import Product from "../../../domain/product/entity/product";
 
 
 const product1 = ProductFactory.create("a", "Name", 1500);
@@ -32,8 +33,8 @@ describe("Test list product use case", () => {
         const productRepository = new ProductRepository();
         const usecase = new ListProductUseCase(productRepository);
 
-        await productRepository.create(product1);
-        await productRepository.create(product2);
+        await productRepository.create(product1 as Product);
+        await productRepository.create(product2 as Product);
 
         const output = await usecase.execute();
 

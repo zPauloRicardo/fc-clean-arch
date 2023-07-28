@@ -39,7 +39,7 @@ describe("Test update product use case", () => {
         };
 
 
-        await productRepository.create(product);
+        await productRepository.create(product as Product);
         const output = await productUpdateUseCase.execute(input);
 
         expect(output).toEqual(input);
