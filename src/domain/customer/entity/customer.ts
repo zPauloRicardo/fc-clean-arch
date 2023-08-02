@@ -33,13 +33,13 @@ export default class Customer extends Entity {
             this.notification.addError({
                 context: "customer",
                 message: "Id is required"
-            })
+            });
         }
         if (this._name.length === 0) {
             this.notification.addError({
                 context: "customer",
                 message: "Name is required"
-            })
+            });
         }
     }
 
