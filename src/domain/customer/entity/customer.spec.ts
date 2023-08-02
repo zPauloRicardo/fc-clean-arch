@@ -4,15 +4,25 @@ import Customer from "./customer";
 describe("Customer unit tests", () => {
   it("should throw error when id is empty", () => {
     expect(() => {
-      let customer = new Customer("", "John");
-    }).toThrowError("Id is required");
+      // tslint:disable-next-line:no-unused-expression
+      new Customer("", "John");
+    }).toThrowError("customer: Id is required");
   });
 
   it("should throw error when name is empty", () => {
     expect(() => {
-      let customer = new Customer("123", "");
-    }).toThrowError("Name is required");
+      // tslint:disable-next-line:no-unused-expression
+      new Customer("123", "");
+    }).toThrowError("customer: Name is required");
   });
+
+  it("should throw error when id and name is empty", () => {
+    expect(() => {
+      // tslint:disable-next-line:no-unused-expression
+      new Customer("", "");
+    }).toThrowError("customer: Id is required,customer: Name is required");
+  });
+
 
   it("should change name", () => {
     // Arrange
@@ -27,8 +37,7 @@ describe("Customer unit tests", () => {
 
   it("should activate customer", () => {
     const customer = new Customer("1", "Customer 1");
-    const address = new Address("Street 1", 123, "13330-250", "São Paulo");
-    customer.Address = address;
+    customer.Address =  new Address("Street 1", 123, "13330-250", "São Paulo");
 
     customer.activate();
 
